@@ -46,10 +46,10 @@ export const ListProducts = () => {
         setLoading(true);
         searchProducts({ ...rest, ...restPg })
             .then(res => res.data)
-            .then(data => {
-                setProducts(data.metadata.data);
+            .then(res => {
+                setProducts(res.data.records);
                 setPagination({
-                    total: data.metadata.totalCount,
+                    total: res.data.totalRecords,
                     ...pagination
                 });
                 setLoading(false);
